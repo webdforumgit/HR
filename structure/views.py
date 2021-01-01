@@ -14,6 +14,7 @@ from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
 from django.contrib.sites.shortcuts import get_current_site
 from django.urls import reverse
+from .Email import Util
 
 # Create your views here.
 @api_view(['GET', 'POST'])
@@ -128,9 +129,10 @@ class employee_register(APIView):
             user = Employeess.objects.get(email=user_data['email'])
             current_site = get_current_site(request).domain
             relativeLink = '/verify_email'
-            absolute_url = 'http://' + current_site + relativeLink + "?id=" + str(user.id)
-            # email_body = "Hi " + user.username + "use the link to verify your email \n" + absolute_url
-            # data = {'email_body': email_body, "email_subject": "Verify Mail ", "email_to": user.email}
+            absolute_url = 'http://' + current_site + relativeLink + "?email=" + user_data['email']
+            email_body = "Hi " + user.username + "use the link to verify your email \n" + absolute_url
+            data = {'email_body': email_body, "email_subject": "Verify Mail ", "to_email": user.email}
+            Util.send_email(data)
             print(absolute_url)
             return Response({"message": serializer.data, "status": status.HTTP_201_CREATED,"action":'Data Inserted Successfully'})
         return Response({"message": serializer.errors, "status": status.HTTP_400_BAD_REQUEST})
@@ -142,12 +144,12 @@ class verify_email(APIView):
     #     queryset = Employeess.objects.all()
     #     serializer_class = (Register_EMPLOYEE_Serializer)
     def get(self, request):
-        id = self.request.query_params.get('id', None)
+        id = self.request.query_params.get('email', None)
         print(self.request.query_params)
         try:
-            user = Employeess.objects.filter(id=id)
+            user = Employeess.objects.filter(email=id)
             if user.exists():
-                user = Employeess.objects.get(id=id)
+                user = Employeess.objects.get(email=id)
                 if user.is_verified == False:
                     user.is_verified = True
                     user.is_active = True

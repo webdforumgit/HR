@@ -17,6 +17,7 @@ router.register(r'branchwise-departments',branchwise_departments)
 router.register(r'deperment-wise-designation',deperment_wise_designation)
 router.register(r'all-deparments',all_deparments)
 # router.register(r'verify-email',verify_email)
+# router.register(r'Register_EMPLOYEE',Register_EMPLOYEE)
 
 
 urlpatterns = [

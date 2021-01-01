@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="a9c5e074-ecc2-4396-8ebb-fa0d1c917df5" name="webdforum" url="http://166.62.10.182">
+        <fileTransfer host="166.62.10.182" port="21">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+          <option name="port" value="21" />
+        </fileTransfer>
+      </webServer>
+      <webServer id="dc03825d-5047-47a0-8ef6-ba2caecb11fc" name="pythonanywhere" url="https://www.pythonanywhere.com/">
+        <fileTransfer port="0" accessType="LOCAL" />
+      </webServer>
+    </option>
+  </component>
+</project>
