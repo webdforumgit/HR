@@ -24,5 +24,5 @@ urlpatterns = [
     url(r'^detect$', app_views.detect),
     url(r'^video_feed$', app_views.video_feed),
     url(r'employee-attendence-summery', app_views.employee_attendence_summery),
-
+    # url(r'employee-attendence-summery', app_views.video_feed),
 ]

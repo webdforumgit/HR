@@ -12,6 +12,7 @@ from rest_framework.decorators import api_view
 from .models import Attendence
 from .serializer import attendence
 # Create your views here.
+from django.http import HttpResponse,StreamingHttpResponse
 @api_view(['GET', 'POST'])
 def index(request):
     return Response({"message": "Got some data!", "data": request.data,"status":status.HTTP_200_OK})
@@ -23,17 +24,30 @@ def gen_frames():  # generate frame by frame from camera
         cam = cv2.VideoCapture(0)
         success, frame = cam.read()  # read the camera frame
         if  frame is not None:
-            return cv2.VideoCapture(0),cv2.waitKey(250)
-        else:
-            ret, buffer = cv2.imencode('.jpg', frame)
-            frame = buffer.tobytes()
-            yield (b'--frame\r\n'
-                   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')  # concat frame one by one and show result
+             cv2.VideoCapture(0).read()
+        # else:
+        #     ret, buffer = cv2.imencode('.jpg', frame)
+            # frame = buffer.tobytes()
+        #     yield (b'--frame\r\n'
+        #            b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n')  # concat frame one by one and show result
 
 @api_view(['POST'])
 def video_feed(request):
     #Video streaming route. Put this in the src attribute of an img tag
     return Response(gen_frames())
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @api_view(['POST'])
 def create_dataset(request):
