@@ -24,6 +24,7 @@ urlpatterns = [
     path('', include('structure.urls')),
     path('attendence/', include('attendence.urls')),
     path('workflow/', include('workflow.urls')),
+    path(r'apprizal/', include('apprizal.urls')),
 ]
 
 

@@ -14,15 +14,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.urls import  path
 from django.contrib import admin
 from attendence import views as app_views
+from .views import All_sample
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'All_sample',All_sample)
 
 urlpatterns = [
+    path('', include(router.urls)),
     url(r'^$', app_views.index),
     url(r'^create_dataset$', app_views.create_dataset),
     url(r'^trainer$', app_views.trainer),
     url(r'^detect$', app_views.detect),
     url(r'^video_feed$', app_views.video_feed),
     url(r'employee-attendence-summery', app_views.employee_attendence_summery),
-    # url(r'employee-attendence-summery', app_views.video_feed),
+    url(r'^create_dataset_new$', app_views.create_dataset_new),
+    url(r'upload_face_video/', app_views.upload_face_video),
 ]

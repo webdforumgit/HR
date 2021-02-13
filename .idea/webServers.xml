@@ -10,8 +10,10 @@
           <option name="port" value="21" />
         </fileTransfer>
       </webServer>
-      <webServer id="dc03825d-5047-47a0-8ef6-ba2caecb11fc" name="pythonanywhere" url="https://www.pythonanywhere.com/">
-        <fileTransfer port="0" accessType="LOCAL" />
+      <webServer id="dc03825d-5047-47a0-8ef6-ba2caecb11fc" name="pythonanywhere" url="">
+        <fileTransfer host="18.222.237.24" port="22" accessType="SFTP">
+          <option name="port" value="22" />
+        </fileTransfer>
       </webServer>
     </option>
   </component>

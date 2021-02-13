@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'structure',
     'workflow',
+    'apprizal',
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -65,13 +66,17 @@ CORS_ALLOW_HEADERS = [
     # 'accept-encoding',
     # 'authorization',
     'content-type',
+    'c-a-h',
     # 'dnt',
     # 'origin',
     # 'user-agent',
     # 'x-csrftoken',
     # 'x-requested-with',
-    # 'company_access_control'
+    # 'company_access_control',
+    # "X-Frame-Options",
 ]
+X_FRAME_OPTIONS = '*'
+XS_SHARING_ALLOWED_METHODS = ['POST','GET','OPTIONS', 'PUT', 'DELETE']
 CORS_ALLOW_HEADERS = CORS_ALLOW_HEADERS + [
         'my-custom-header',
     ]
@@ -120,7 +125,8 @@ WSGI_APPLICATION = 'hrmanagement.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3"))
     }
 }
 
