@@ -187,7 +187,7 @@ REST_FRAMEWORK = {
 DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
 EMAIL_HOST = "smtp.gmail.com"
-EMAIL_HOST_USER = "webd.forum@gmail.com"
-EMAIL_HOST_PASSWORD = 'suvam123$%6&'
+EMAIL_HOST_USER = "...@gmail.com"
+EMAIL_HOST_PASSWORD = '****'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
